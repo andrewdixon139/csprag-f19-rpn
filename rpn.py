@@ -1,7 +1,16 @@
 #!/usr/bin/env python3
 
 def calculate(arg):
-    pass
+    stack = list()
+    for token in arg.split():
+        if token == '+':
+            arg1 = stack.pop()
+            arg2 = stack.pop()
+            stack.append(arg1 + arg2)
+        else: 
+            stack.append(int(token))
+    
+    return stack.pop()
 
 def main():
     while True:
