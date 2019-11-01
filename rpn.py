@@ -1,18 +1,27 @@
 #!/usr/bin/env python3
 
+def add(a, b): 
+    return a + b
+
+def sub(a, b): 
+    return a - b
+
+operators = {
+    '+': add,
+    '-': sub
+}
+
 def calculate(arg):
     stack = list()
     for token in arg.split():
-        if token == '+':
-            arg1 = stack.pop()
+        try: 
+            value = int(token)
+            stack.append(value)
+        except ValueError: 
+            function = operators[token]
             arg2 = stack.pop()
-            stack.append(arg1 + arg2)
-        elif token == '-': 
             arg1 = stack.pop()
-            arg2 = stack.pop()
-            stack.append(arg2 - arg1)
-        else: 
-            stack.append(int(token))
+            stack.append(function(arg1, arg2))
     
     #print(stack)
     if len(stack) != 1: 
