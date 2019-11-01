@@ -14,6 +14,14 @@ class TestBasics(unittest.TestCase):
         result = rpn.calculate("12 8 *")
         self.assertEqual(96, result)
 
+    def test_division_trunc(self): 
+        result = rpn.calculate("12 8 /")
+        self.assertEqual(1, result)
+
+    def test_division(self): 
+        result = rpn.calculate("24 8 /")
+        self.assertEqual(3, result)
+
     def test_badinput(self): 
         with self.assertRaises(TypeError):
             rpn.calculate("1 2 3 +")
