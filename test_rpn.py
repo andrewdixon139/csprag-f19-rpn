@@ -25,10 +25,6 @@ class TestBasics(unittest.TestCase):
     def test_badinput(self): 
         with self.assertRaises(TypeError):
             rpn.calculate("1 2 3 +")
-
-    def test_carat_neg(self): 
-        result = rpn.calculate("3 -2 ^")
-        self.assertEqual(0, result)
     
     def test_carat(self): 
         result = rpn.calculate("2 4 ^")
